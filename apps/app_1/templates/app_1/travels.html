@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_1/css/travels.css' %}">  
+    <title>Event Planner</title>
+    <link rel="icon" type='image/ico' href="{% static 'app_1/images/planeta.png' %}" />
+</head>
+<body>
+
+   
+
+    <!-- your trip -->
+    <div class="top">
+        <div class="container">
+            <h2>Welcome {{user.first_name}}!</h2>
+            <h3 ><a class="links" href="/addevent">Add an event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="links" href="/">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="links" href="/logout">Logout</a></h3>
+            {% if user.id == 10 %}
+            <h3><a href ='/admin_page'>Admin</a></h3>
+            {% endif %}
+        </div>
+    </div>
+    <h1>Your events</h1>
+    {% if not my_trips %}
+    <div class="empty">
+        <h4>You dont have any events&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-light btn-lg active" href="/addtrip">Add an event</a></h4>
+    </div>
+    <hr>
+    {% endif %}
+    {% if my_trips %}
+    {% for trip in my_trips %} 
+    <div class="container">
+        <div class="your-event">
+            
+            
+            <div class="card mb-5">           
+                <div class="row no-gutters justify-content-between">
+                    <div class="center-cropped" 
+                        style="background-image: url('{{trip.image.url}}');">
+
+                    <!-- <img src="{{trip.image.url}}" class="card-img" alt="..."> -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="card-title">{{trip.destination}}</h5>
+                            <p class="card-text">From {{trip.start_date}} </p>
+                            <p class="card-text">to {{trip.end_date}} </p>
+                            <p class="card-text">{{trip.description}}</p>
+                            {% if trip.planner.id == user.id %}
+                                <a class="btn btn-light btn-lg active" href="/events/{{trip.id}}/delete">Delete</a>
+                                {% else %}
+                                <a class="btn btn-light btn-lg active" href="/events/{{trip.id}}/cancel">Cancel</a>
+                                {% endif %}
+                            <a class="btn btn-light btn-lg active" href= "/view/{{trip.id}}">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+       
+   
+    <!-- other trips -->
+    <h1>All events</h1>
+    {% if not other_trips %}
+    <div class="empty">
+        <h4>There are no events yet</h4>
+    </div>
+    {% endif %}
+    {% if other_trips %}
+    {% for trip in other_trips %}
+    <div class="container">
+   
+        <div class="card mb-5">
+            <div class="row no-gutters justify-content-between">
+                <div class="center-cropped" 
+                style="background-image: url('{{trip.image.url}}');">
+                    <!-- <img src="{{trip.image.url}}" class="card-img" alt="..."> -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{trip.destination}}</h5>
+                        <p class="card-text">From {{trip.start_date}} </p>
+                        <p class="card-text">to {{trip.end_date}} </p>
+                        <p class="card-text">{{trip.description}}</p>
+                        <a class="btn btn-light btn-lg active"href= "/view/{{trip.id}}">View</a>
+                        <a class="btn btn-light btn-lg active" href="/travels/{{trip.id}}/join">Join</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

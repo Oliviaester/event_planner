@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Events</h1>
+
+
+        {% for trip in trips %} 
+        <div class="container">
+            <div class="your-event">
+                <div class="card mb-5">           
+                    <div class="row no-gutters justify-content-between">
+                        <div class="center-cropped" 
+                            style="background-image: url('{{trip.image.url}}');">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="card-title">{{trip.destination}}</h5>
+                                <p class="card-text">From {{trip.start_date}} </p>
+                                <p class="card-text">to {{trip.end_date}} </p>
+                                <p class="card-text">{{trip.description}}</p>
+                                    <a class="btn btn-light btn-lg active" href="/events/{{trip.id}}/delete">Delete</a>
+                                <a class="btn btn-light btn-lg active" href= "/view/{{trip.id}}">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+</body>
+</html>

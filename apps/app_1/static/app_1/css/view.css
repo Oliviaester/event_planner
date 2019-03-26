@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h3 {
+    text-align: right;
+    margin-top: 40px;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+img {
+    margin-bottom: 20px;
+}
+.box {
+    width: 500px;
+    margin: 100px auto;
+}
+.top {
+    height: 130px;
+    color: white;
+    background: linear-gradient(90deg, rgba(94,185,247,1) 0%, rgba(20,215,235,1) 100%);
+    padding: 20px 0;
+}
+.links {
+    color: white;
+}
