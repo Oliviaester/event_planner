@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(20,215,235,1) 13%, rgba(51,106,168,1) 95%);
+
+}
+.errors {
+    color: red;
+    margin: 0 25px 10px 25px;;
+}
+.box {
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 430px;
+    margin: 200px auto;
+    height: 350px;
+    padding: 20px;
+    background-color: #f5f8fb;
+}
+form {
+    text-align: center;
+    color: black;
+}
+input {
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+    transition: border 0.5s;
+    outline: none;
+}
+button {
+    margin: 20px 0;
+}
+p {
+    color: black;
+}
+a {
+    color: #0000ff;
+}

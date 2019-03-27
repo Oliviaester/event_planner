@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif !important;
+}
+.container, .card {
+    border: none;
+}
+h3, .links {
+    text-align: right;
+}
+h1 {
+    color: #808080;
+    text-align: center;
+    margin: 40px 0;
+}
+.your-event {
+    min-height: 200px;
+}
+.empty {
+    height: 100px;
+}
+.top {
+    height: 130px;
+    color: white;
+    background: linear-gradient(90deg, rgba(94,185,247,1) 0%, rgba(20,215,235,1) 100%);
+    padding: 20px 0;
+}
+.links {
+    color: white;
+}
+.center-cropped {
+    width: 400px;
+    height: 400px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #f2f2f2;
+  }
+  
