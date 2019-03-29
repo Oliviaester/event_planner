@@ -45,3 +45,10 @@ p {
 a {
     color: #0000ff;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+    background: none;
+    background-color: #4d94ff;
+}
+}
